@@ -1,5 +1,7 @@
 package com.escola;
 
+import com.escola.domain.User;
+
 import java.util.Scanner;
 
 public class Main {
@@ -19,7 +21,8 @@ public class Main {
                 """);
 
         System.out.print("Digite seu nome: ");
-        String Username = scanner.nextLine();
+        String userName = scanner.nextLine();
+        User user = new User(userName);
 
         System.out.println("===============================");
     }
