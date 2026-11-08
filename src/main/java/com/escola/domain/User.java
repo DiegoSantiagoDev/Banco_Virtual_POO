@@ -23,7 +23,9 @@ public class User {
         }
 
         if (userName.length() < 3 || userName.length() > 100) {
-            throw new InvalidNameSizeException("tamanho invalido!");
+            throw new InvalidNameSizeException(
+                    "tamanho invalido!"
+            );
         }
 
         this.userName = userName;

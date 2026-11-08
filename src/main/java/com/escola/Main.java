@@ -1,6 +1,8 @@
 package com.escola;
 
 import com.escola.domain.User;
+import com.escola.exception.InvalidNameSizeException;
+import com.escola.exception.NonExistentNameException;
 
 import java.util.Scanner;
 
@@ -19,11 +21,15 @@ public class Main {
                 |=============================|
                 
                 """);
+        try {
+            System.out.print("Digite seu nome: ");
+            String userName = scanner.nextLine();
+            User user = new User(userName);
 
-        System.out.print("Digite seu nome: ");
-        String userName = scanner.nextLine();
-        User user = new User(userName);
+            System.out.println("===============================");
 
-        System.out.println("===============================");
+        }catch (InvalidNameSizeException | NonExistentNameException e) {
+            System.out.println("Erro na inicializacao do nome: " + e.getMessage());
+        }
     }
 }
