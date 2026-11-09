@@ -1,8 +1,8 @@
 package com.escola;
 
-import com.escola.domain.User;
-import com.escola.exception.InvalidNameSizeException;
-import com.escola.exception.NonExistentNameException;
+import com.escola.controller.UserController;
+import com.escola.repository.UserRepository;
+import com.escola.service.UserService;
 
 import java.util.Scanner;
 
@@ -12,24 +12,17 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("""
-                
-                |=============================|
-                |                             |
-                |        BANCO VIRTUAL        |
-                |                             |
-                |=============================|
-                
-                """);
-        try {
-            System.out.print("Digite seu nome: ");
-            String userName = scanner.nextLine();
-            User user = new User(userName);
+        UserRepository userRepository = new UserRepository();
 
-            System.out.println("===============================");
+        UserService userService = new UserService(userRepository);
 
-        }catch (InvalidNameSizeException | NonExistentNameException e) {
-            System.out.println("Erro na inicializacao do nome: " + e.getMessage());
-        }
+        UserController userController = new UserController(
+                userService,
+                scanner
+        );
+
+        userController.createUser();
+
+        scanner.close();
     }
 }

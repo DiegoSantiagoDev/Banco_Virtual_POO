@@ -15,7 +15,7 @@ public class UserService {
     public User createUser(String userName) {
         if (userRepository.existsByName(userName)) {
             throw new NameAlreadyExistsException(
-                    "esse nome ja existe!"
+                    userName + "esse nome ja existe!"
             );
         }
 
